@@ -1,0 +1,14 @@
+CC = g++
+
+#all: test_HyTM.o test_HyTM
+all: test_HyTM
+
+
+# test_HyTM.o: test_HyTM.cpp
+#	$(CC) -O3 -fgnu-tm -c test_HyTM.cpp -mrtm -static -lm -lpthread
+
+test_HyTM: test_HyTM.cpp
+	$(CC) -O3 -fgnu-tm -mrtm -static test_HyTM.cpp -o test_HyTM -lm -lpthread -litm
+
+clean:
+	rm test_HyTM

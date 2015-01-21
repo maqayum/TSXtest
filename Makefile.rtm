@@ -1,0 +1,13 @@
+CC = g++
+
+all: test_rtm.o test_rtm
+
+
+test_rtm.o: test_rtm.cpp
+	$(CC) -g -O3 -c test_rtm.cpp -mrtm -static -lm -lpthread
+
+test_rtm: test_rtm.cpp
+	$(CC) -g -O3 test_rtm.cpp -o test_rtm -mrtm -static -lm -lpthread
+
+clean:
+	rm test_rtm
