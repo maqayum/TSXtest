@@ -1,6 +1,6 @@
 /**
  * Compile by:
- * $ g++ -O2 -std=c++11 -DL1DSZ=$(getconf LEVEL1_DCACHE_LINESIZE) -DCORES=$(grep -c processor /proc/cpuinfo) tsx.cc -lpthread
+ * $ g++ -O2 -std=c++11 -mrtm -DL1DSZ=$(getconf LEVEL1_DCACHE_LINESIZE) -DCORES=$(grep -c processor /proc/cpuinfo) tsx.cc -lpthread
  *
  * Add -DABORT_COUNT to get TSX aborts statistic in the program output.
  *
@@ -35,7 +35,7 @@
 using namespace std;
 
 // TSX code is stolen from glibc-2.18
-
+/*
 #define _XA_EXPLICIT		0
 #define _XA_RETRY		1
 #define _XA_CONFLICT		2
@@ -50,11 +50,11 @@ using namespace std;
 #define _XABORT_NESTED		(1 << 5)
 
 #define _XABORT_CODE(x)		(((x) >> 24) & 0xff)
-
+*/
 #define _ABORT_LOCK_BUSY	0xff
 
 #define __force_inline __attribute__((__always_inline__)) inline
-
+/*
 static __force_inline int _xbegin(void)
 {
 	int ret = _XBEGIN_STARTED;
@@ -82,7 +82,7 @@ static __force_inline int _xtest(void)
 			: "=r" (out) :: "memory");
 	return out;
 }
-
+*/
 static const auto TRX_BUF_SZ_MAX = 8192UL;
 enum class Sync : unsigned char {
 	TSX,
