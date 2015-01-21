@@ -1,5 +1,5 @@
 // written by Roman Dementiev
-//Edited by M A Qayum
+//Edited by M A Qayum for unix system
 //#include "stdafx.h"
 //#include <windows.h>
 //#include <process.h>
